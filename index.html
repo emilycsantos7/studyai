@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyAI — Aprenda qualquer coisa, do seu jeito</title>
+  <meta name="description" content="StudyAI — Seu professor particular com Inteligência Artificial. Aprenda qualquer matéria de forma personalizada, rápida e eficiente." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="window.__katexLoaded=true"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner container">
+    <a href="#/" class="logo" onclick="navigate('/')">
+      <span class="logo-icon">🧠</span>
+      <span class="logo-text">Study<span class="logo-accent">AI</span></span>
+    </a>
+
+    <nav class="header-nav" id="headerNav">
+      <a href="#/" class="nav-link" data-page="home">Início</a>
+      <a href="#/dashboard" class="nav-link" data-page="dashboard">Dashboard</a>
+      <a href="#/biblioteca" class="nav-link" data-page="biblioteca">Biblioteca</a>
+      <a href="#/configuracoes" class="nav-link" data-page="configuracoes">Configurações</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="streak-badge" id="streakBadge" title="Dias consecutivos">
+        <span class="streak-icon">🔥</span>
+        <span class="streak-count" id="streakCount">0</span>
+      </div>
+      <button class="btn-icon" id="themeToggle" title="Alternar tema" onclick="toggleTheme()">
+        <span class="theme-icon-light">☀️</span>
+        <span class="theme-icon-dark">🌙</span>
+      </button>
+      <button class="btn-icon hamburger" id="hamburger" onclick="toggleMobileMenu()" title="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ========== MAIN CONTENT (SPA Router Target) ========== -->
+<main id="appRoot"></main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-icon">🧠</span>
+        <span class="logo-text">Study<span class="logo-accent">AI</span></span>
+      </div>
+      <p>Seu professor particular com Inteligência Artificial. Aprenda qualquer coisa, do seu jeito.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#/" onclick="navigate('/')">Início</a></li>
+        <li><a href="#/dashboard" onclick="navigate('/dashboard')">Dashboard</a></li>
+        <li><a href="#/biblioteca" onclick="navigate('/biblioteca')">Biblioteca</a></li>
+        <li><a href="#/configuracoes" onclick="navigate('/configuracoes')">Configurações</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Matérias</h4>
+      <ul>
+        <li><a href="#/" onclick="startStudy('Matemática')">Matemática</a></li>
+        <li><a href="#/" onclick="startStudy('Física')">Física</a></li>
+        <li><a href="#/" onclick="startStudy('Química')">Química</a></li>
+        <li><a href="#/" onclick="startStudy('História')">História</a></li>
+        <li><a href="#/" onclick="startStudy('Programação em Python')">Programação</a></li>
+        <li><a href="#/" onclick="startStudy('Inglês para iniciantes')">Inglês</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 StudyAI. Feito com ❤️ para estudantes brasileiros.</p>
+  </div>
+</footer>
+
+<!-- ========== MODAL OVERLAY ========== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+<div class="modal" id="globalModal">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <button class="btn-icon" onclick="closeModal()">✕</button>
+  </div>
+  <div class="modal-body" id="modalBody"></div>
+</div>
+
+<!-- ========== TOAST NOTIFICATION ========== -->
+<div class="toast" id="toast"></div>
+
+<!-- ========== APP SCRIPTS ========== -->
+<script src="js/storage.js"></script>
+<script src="js/knowledgeEngine.js"></script>
+<script src="js/gemini.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
